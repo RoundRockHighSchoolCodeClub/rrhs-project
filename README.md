@@ -2,7 +2,7 @@
 A weird simulation(?) thing
 
 # patch log
-0.0.1 - Creation of branch.\n
+0.0.1 - Creation of branch.\n\
 0.1.0 - Adding of setup for sim.
 
 # extra info
