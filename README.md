@@ -21,7 +21,7 @@ while cont == 'yes':
         change = 0
         if guess in goalWord:
             if guess in blanks:
-                print("you already guessed that, idiot. tsk tsk tsk")
+                print("you already guessed that")
             for char in goalWord:
                 if char == guess:
                     listBlanks[index] = guess
@@ -39,7 +39,7 @@ while cont == 'yes':
         else: 
             print("no <3")
             strikes -= 1
-            print(str(strikes) + " strikes left until this innocent stickman's death.")
+            print(str(strikes) + " strikes left.")
             if strikes == 0:
                 print("you lose :(")
                 print(goalWord + " was the correct word.")
