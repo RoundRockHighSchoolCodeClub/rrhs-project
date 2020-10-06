@@ -5,7 +5,7 @@ print("Welcome!")
 print("Good luck :)")
 cont = 'yes'
 while cont == 'yes':
-    wordBank = ["innocent", "whimsical", "execution", "death", "spelling", "potato", "ditch", "crack", "rhythm", "phone", "rebel", "pot", "blood", "ankle", "baguette", "four", "avocado", "flex", "refrigerator", "arrow", "banana", "aluminum"]
+    wordBank = ["innocent", "spelling", "potato", "ditch", "crack", "rhythm", "phone", "rebel", "pot", "ankle", "baguette", "four", "avocado", "flex", "refrigerator", "arrow", "banana", "aluminum"]
     goalWord = random.choice(wordBank)
     strikes = 6
     blanks = ""
