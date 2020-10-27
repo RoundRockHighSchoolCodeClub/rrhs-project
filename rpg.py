@@ -8,7 +8,7 @@ class Character:
   def do_damage(self, enemy):
     damage = min(
         max(randint(0, self.health) - randint(0, enemy.health), 0),
-        enemy.health)
+        enemy.health) #Change hit chance
     enemy.health = enemy.health - damage
     if damage == 0: print "%s evades %s's attack." % (enemy.name, self.name)
     else: print "%s hurts %s for %s damage!" % (self.name, enemy.name, damage)
@@ -25,7 +25,7 @@ class Player(Character):
     Character.__init__(self)
     self.state = 'normal'
     self.health = 10
-    self.health_max = 10
+    self.health_max = 10 #MAX HEALTH
   def quit(self):
     print "%s can't find the way back home, and dies of starvation.\nR.I.P." % self.name
     self.health = 0
@@ -50,6 +50,7 @@ class Player(Character):
   def explore(self):
     if self.state != 'normal':
       print "%s is too busy right now!" % self.name
+    
       self.enemy_attacks()
     else:
       print "%s explores a twisty passage." % self.name
@@ -107,7 +108,7 @@ Commands = {
   'attack': Player.attack,
   'buy': Player.buy,
   'leave': Player.leave,
-
+  # Add more commands or whatever
   }
 
 p = Player()
