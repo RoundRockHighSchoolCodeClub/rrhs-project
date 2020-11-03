@@ -1,0 +1,90 @@
+#Idon'tlikeGitHubitlookskindauglyImmacodeelsewhere
+
+import random
+
+#-------------
+class Character:
+  def __init__(self, name, attack, health, level):
+      self.name = name
+      self.attack = attack
+      self.current_health = health
+      self.max_health = health
+      self.level = level
+
+  def data(self):
+    return f"name: {self.name}\nattack power: {self.attack}\ncurrent health/max health: {self.current_health}/{self.max_health}\nlevel: {self.level}"
+  
+  def dodge_rate(self, dodge, enemy_attack):
+    self.dodge = dodge
+    self.damage = enemy_attack
+    hit_chance = random.randint(1,10)
+    if hit_chance > self.dodge:
+      print(f"{self.name} took {self.damage} damage!")
+      self.current_health -= self.damage
+      print(f"{self.name} health: {self.current_health}/{self.max_health}")
+    else:
+      print(f"{self.name} dodged!")
+     
+#-------------
+name = input("What is your name, adventurer?\n")
+player = Character(name, 5, 30, 1)
+print(player.data())
+print("")
+
+#-------------
+print("You are in the village center. You may find creatures to battle here.\n")
+
+#-------------
+nameless_thing = Character("nameless_thing", 5, 30, "no level")
+battle_begin = input("A nameless_thing has appeared! Will you walk to it?\n")
+if battle_begin.lower() == "yes":
+  battle_choice = input("Will you attack? If you do, it may become hostile.\n")  
+  while battle_choice.lower() == "yes":
+    if nameless_thing.current_health <= 0:
+      print("You won!\n")
+      battle_begin = ""
+      battle_choice = ""
+      print("exiting")
+      exit()
+    elif nameless_thing.current_health > 0 and player.current_health > 0:
+      #-----
+      nameless_thing.dodge_rate(5, player.attack)
+        #-----
+      if nameless_thing.current_health > 0:
+        #nameless_thing attack
+        attack_chance = random.randint(1,10)
+        if attack_chance > 5:
+          print("The nameless_thing bumps into you, throwing you back.")
+          print(f"You took {nameless_thing.attack} damage!")
+          player.current_health -= nameless_thing.attack
+          print(f"your health: {player.current_health}/{player.max_health}")
+          if player.current_health <= 0:
+            print("You died.")
+            print("exiting")
+            exit()
+        else:
+          print("The nameless_thing attempted to attack and missed.")
+        #nameless_thing attack
+        battle_choice = input("Will you attack again?\n")
+    while battle_choice.lower() == "no":
+      #nameless_thing
+      attack_chance = random.randint(1,10)
+      if attack_chance > 5:
+        print("The nameless_thing bumps into you, throwing you back.")
+        print(f"You took {nameless_thing.attack} damage!")
+        player.current_health -= nameless_thing.attack
+        print(f"your health: {player.current_health}/{player.max_health}")
+        if player.current_health <= 0:
+          print("You died.")
+          print("exiting")
+          exit()
+      else:
+        print("The nameless_thing attempted to attack and missed.")
+      #nameless_thing attack
+      battle_choice = input("Will you attack?\n")
+  if battle_choice == "no":
+    print("You walk away to avoid interaction.")
+else:
+  print("You walk away to avoid interaction.")
+
+#-------------
